@@ -1,3 +1,4 @@
+'use client'
 import { dragOverHandler, dropHandler } from '@/lib/drag-drop'
 
 function Imagen({ children, img }) {
