@@ -13,6 +13,7 @@ export function dropHandler(ev) {
 
     if (ev.dataTransfer.items) {
         // Use DataTransferItemList interface to access the file(s)
+        // console.log(...ev.dataTransfer.items);
         [...ev.dataTransfer.items].forEach((item, i) => {
             // If dropped items are files ...
             if (item.kind === "file") {
