@@ -57,6 +57,13 @@ export async function imgRetrieveAll() {
 }
 
 
+async function imgRetrieve (formData) {
+  const public_id = formData.get('public_id')
+  const result = await cloudinary.api.resource(public_id, {});
+
+  return result;
+}
+
 
 export async function imgUpdate(formData) {
   const public_id = formData.get('public_id')
