@@ -10,7 +10,7 @@ export default async function Home() {
 
   return (
     <main>
-      <Galeria images={images}/>
+      <Galeria images={images} />
     </main >
   )
 }

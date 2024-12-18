@@ -30,7 +30,7 @@ export async function imgCreate(formData) {
     // width: 600, height: 370, aspect-ratio: 1.62
     const result = await cloudinary.uploader.upload(fileUri, {
       invalidate: true,
-      folder: "galeria",
+      asset_folder: "galeria",
       public_id: file.name,
       aspect_ratio: "1.62",
       width: 600,
@@ -46,23 +46,37 @@ export async function imgCreate(formData) {
 }
 
 
+
+
 export async function imgRetrieveAll() {
+  // legacy fixed folders
   const result = await cloudinary.api.resources({
     max_results: 500,
     type: 'upload',
     prefix: 'galeria'
   });
 
+  // new dynamic folders
+  // const result = await cloudinary.api.resources_by_asset_folder('galeria', {
+  //   max_results: 500,
+  //   type: 'upload',
+  // });
+
+
   return result;
 }
 
 
-async function imgRetrieve (formData) {
+
+
+async function imgRetrieve(formData) {
   const public_id = formData.get('public_id')
   const result = await cloudinary.api.resource(public_id, {});
 
   return result;
 }
+
+
 
 
 export async function imgUpdate(formData) {
@@ -81,8 +95,8 @@ export async function imgUpdate(formData) {
     // width: 600, height: 370, aspect-ratio: 1.62
     const result = await cloudinary.uploader.upload(fileUri, {
       invalidate: true,
-      // folder: "galeria",
-      public_id,  // public_id ya contiene folder
+      asset_folder: "galeria",
+      public_id,
       aspect_ratio: "1.62",
       width: 600,
       crop: "fill",
@@ -95,6 +109,7 @@ export async function imgUpdate(formData) {
     return { type: 'error', message: error.message }
   }
 }
+
 
 
 

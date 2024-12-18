@@ -1,10 +1,10 @@
 'use client'
 import Imagen from '@/components/Imagen';
 import { imgCreate, imgUpdate, imgDelete } from '@/lib/actions';
-import { toast } from 'react-hot-toast';
+import { toast } from 'sonner';
 
 
-async function Galeria({ images }) {
+function Galeria({ images }) {
   // console.log(images);
 
   async function crear(data) {
@@ -39,12 +39,12 @@ async function Galeria({ images }) {
       <div className='galeria'>
         {images.resources.map(img => (
           <Imagen key={img.public_id} img={img.secure_url} >
-             <input type='file' name='file' accept='image/*' style={{ display: 'none' }} />
-             <input type='hidden' name='public_id' value={img.public_id} />
+            <input type='file' name='file' accept='image/*' style={{ display: 'none' }} />
+            <input type='hidden' name='public_id' value={img.public_id} />
 
-             <button formAction={actualizar} > Actualizar imagen</button>
-             <button formAction={eliminar} > Eliminar imagen</button>
-           </Imagen>
+            <button formAction={actualizar} > Actualizar imagen</button>
+            <button formAction={eliminar} > Eliminar imagen</button>
+          </Imagen>
         ))
         }
       </div>

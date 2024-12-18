@@ -1,11 +1,11 @@
 'use client'
-// Drag and Drop: https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop
 
-export function dragOverHandler(ev) {
+
+function dragOverHandler(ev) {
     ev.preventDefault();
 }
 
-export function dropHandler(ev) {
+function dropHandler(ev) {
     ev.preventDefault();
     const imgPreview = ev.target;
     const fileInput = ev.target.nextSibling;
@@ -22,8 +22,34 @@ export function dropHandler(ev) {
 
                 let reader = new FileReader()
                 reader.readAsDataURL(file)
-                reader.onloadend = () =>  imgPreview.src = reader.result
+                reader.onloadend = () => imgPreview.src = reader.result
             }
         });
-    } 
+    }
 }
+
+
+
+export default function Imagen({ children, img }) {
+    return (
+        <form id="preview" >
+            <img
+                id='imgPreview'
+                src={img}
+                onDrop={dropHandler}
+                onDragOver={dragOverHandler}
+                style={{
+                    display: 'block',
+                    aspectRatio: 1,
+                    width: '324px',
+                    height: '200px',
+                    objectFit: 'cover',
+                    objectPosition: 'center'
+                }} />
+
+            {children}
+        </form>
+
+    )
+}
+
