@@ -1,6 +1,6 @@
 # GALERÍA DE IMÁGENES
 
-Esta aplicación realizada con NextJS 13+, muestra una galería de imágenes alojadas en Cloudinary.
+Esta aplicación realizada con NextJS 15+, muestra una galería de imágenes alojadas en Cloudinary.
 
 Además, usando la API proporcionada por Cloudinary, realiza las siguientes operaciones CRUD:
 
