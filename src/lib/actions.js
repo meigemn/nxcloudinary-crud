@@ -30,7 +30,7 @@ export async function imgRetrieveAll() {
 
 
 
-export async function imgCreate(formData) {
+export async function imgCreate(prevState, formData) {
   const file = formData.get('file')
 
   // console.log(file);
@@ -56,16 +56,16 @@ export async function imgCreate(formData) {
     })
 
     revalidatePath('/');
-    return { type: 'success', message: `Imagen subida a ${result.public_id}` }
+    return { success: `Imagen subida: ${result.public_id}` }
   } catch (error) {
-    return { type: 'error', message: error.message }
+    return { error: error.message }
   }
 }
 
 
 
 
-export async function imgUpdate(formData) {
+export async function imgUpdate(prevState, formData) {
   const public_id = formData.get('public_id')
   const file = formData.get('file')
 
@@ -90,17 +90,17 @@ export async function imgUpdate(formData) {
     })
 
     revalidatePath('/');
-    return { type: 'success', message: `Imagen actualizada ${result.public_id}` }
+    return { success: `Imagen actualizada: ${result.public_id}` }
   } catch (error) {
     console.log(error);
-    return { type: 'error', message: error.message }
+    return { error: error.message }
   }
 }
 
 
 
 
-export async function imgDelete(formData) {
+export async function imgDelete(prevState, formData) {
   const public_id = formData.get('public_id')
 
   console.log(public_id);
@@ -109,9 +109,9 @@ export async function imgDelete(formData) {
     const result = await cloudinary.uploader.destroy(public_id);
     console.log(result);
     revalidatePath('/');
-    return { type: 'success', message: `Imagen eliminada de ${public_id}` }
+    return { success: `Imagen eliminada: ${public_id}` }
   } catch (error) {
     console.log(error);
-    return { type: 'error', message: error.message }
+    return { error: error.message }
   }
 }

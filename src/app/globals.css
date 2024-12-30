@@ -32,9 +32,9 @@ button {
 }
 
 .galeria {
-  display: flex;
-  gap: 60px;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(324px, 1fr));
 }
 
 .imgPreview {
