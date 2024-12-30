@@ -1,7 +1,9 @@
 'use client'
-import Imagen from '@/components/Imagen';
+import InputImage from '@/components/InputImage';
 import { imgCreate, imgUpdate, imgDelete } from '@/lib/actions';
+import { RotateCw, Trash, CloudUpload } from 'lucide-react';
 import { toast } from 'sonner';
+
 
 
 function Galeria({ images }) {
@@ -29,22 +31,25 @@ function Galeria({ images }) {
 
   return (
     <>
-      <Imagen img='image.png'>
-        <input type='file' name='file' accept='image/*' style={{ display: 'none' }} />
-        <button formAction={crear} > Subir imagen</button>
-      </Imagen>
-      <h1>Galería de imágenes</h1>
-      <p>Para actualizar una imagen, arrastra y suelta sobre ella la nueva imagen, y luego pulsa en el botón <strong>Actualizar imagen</strong></p>
+      <form id="preview" >
+        <InputImage img='image.png' />
+        <button formAction={crear} title='SUBIR'> <CloudUpload /></button>
+      </form>
+
+      <h1 className='text-3xl font-bold text-blue-600'>Galería de imágenes</h1>
+      <p>Para actualizar una imagen, arrastra y suelta sobre ella la nueva imagen, y luego pulsa en el botón <RotateCw className='inline' /></p>
       <br />
+
       <div className='galeria'>
         {images.resources.map(img => (
-          <Imagen key={img.public_id} img={img.secure_url} >
-            <input type='file' name='file' accept='image/*' style={{ display: 'none' }} />
+          <form id="preview" key={img.public_id} >
             <input type='hidden' name='public_id' value={img.public_id} />
+            <InputImage img={img.secure_url} />
 
-            <button formAction={actualizar} > Actualizar imagen</button>
-            <button formAction={eliminar} > Eliminar imagen</button>
-          </Imagen>
+            <button formAction={actualizar} title='ACTUALIZAR'> <RotateCw /> </button>
+            <button formAction={eliminar} title='ELIMINAR' > <Trash /></button>
+
+          </form>
         ))
         }
       </div>

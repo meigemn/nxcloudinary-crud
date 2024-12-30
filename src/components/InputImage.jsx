@@ -29,15 +29,38 @@ function dropHandler(ev) {
 }
 
 
+// img: Double click
+export function dblclickHandler(ev) {
+    const fileInput = ev.target.nextSibling;
 
-export default function Imagen({ children, img }) {
+    fileInput.click();
+}
+
+
+// input: Change
+export function changeHandler(ev) {
+    const imgPreview = ev.target.previousSibling;
+    const fileInput = ev.target;
+
+    if (fileInput.files && fileInput.files[0]) {
+
+        var reader = new FileReader();
+        reader.readAsDataURL(fileInput.files[0]);   // elegimos únicamente el primer archivo
+        reader.onload = (e) => imgPreview.setAttribute("src", e.target.result);
+
+    }
+}
+
+
+export default function InputImage({ children, img }) {
     return (
-        <form id="preview" >
+        <>
             <img
                 id='imgPreview'
                 src={img}
                 onDrop={dropHandler}
                 onDragOver={dragOverHandler}
+                onDoubleClick={dblclickHandler}
                 style={{
                     display: 'block',
                     aspectRatio: 1,
@@ -46,9 +69,15 @@ export default function Imagen({ children, img }) {
                     objectFit: 'cover',
                     objectPosition: 'center'
                 }} />
+            <input
+                type='file'
+                name='file'
+                accept='image/*'
+                onChange={changeHandler}
+                style={{ display: 'none' }} />
 
             {children}
-        </form>
+        </>
 
     )
 }

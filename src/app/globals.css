@@ -22,24 +22,10 @@ body {
 
 
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  min-height: 100vh;
-}
-
 html {
   padding: 30px;
 }
 
-h1 {
-  padding: 20px 0;
-}
 
 button {
   font-size: 1.2rem;
