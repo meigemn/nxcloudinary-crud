@@ -44,7 +44,7 @@ button {
   object-position: center;
 }
 
-a.enlace {
+/* a.enlace {
   display: inline-block;
   padding: 6px;
   margin: 4px;
@@ -56,4 +56,4 @@ a.enlace {
 
 a.enlace:hover {
   box-shadow: 0 0 2px gray;
-}
+} */

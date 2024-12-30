@@ -55,7 +55,7 @@ export async function imgCreate(prevState, formData) {
       gravity: "center"
     })
 
-    revalidatePath('/');
+    // revalidatePath('/');   // en lugar de revalidatePath en el servidor usaremos refresh en el cliente
     return { success: `Imagen subida: ${result.public_id}` }
   } catch (error) {
     return { error: error.message }
@@ -89,7 +89,7 @@ export async function imgUpdate(prevState, formData) {
       gravity: "center"
     })
 
-    revalidatePath('/');
+    // revalidatePath('/');   // en lugar de revalidatePath en el servidor usaremos refresh en el cliente
     return { success: `Imagen actualizada: ${result.public_id}` }
   } catch (error) {
     console.log(error);
@@ -102,13 +102,13 @@ export async function imgUpdate(prevState, formData) {
 
 export async function imgDelete(prevState, formData) {
   const public_id = formData.get('public_id')
+  // console.log(public_id);
 
-  console.log(public_id);
 
   try {
-    const result = await cloudinary.uploader.destroy(public_id);
-    console.log(result);
-    revalidatePath('/');
+    await cloudinary.uploader.destroy(public_id, { invalidate: true });
+
+    // revalidatePath('/');  // en lugar de revalidatePath en el servidor usaremos refresh en el cliente
     return { success: `Imagen eliminada: ${public_id}` }
   } catch (error) {
     console.log(error);
