@@ -101,8 +101,8 @@ export async function imgUpdate(prevState, formData) {
 
 /*
 cuando eliminamos un elemento usaremos refresh en el cliente 
-en lugar de revalidatePath en el servidor 
-para dar tiempo a mostrar el mensaje success o error antes de 
+en lugar de revalidatePath en el servidor para dar tiempo
+a mostrar el mensaje success o error antes de 
 eliminar el elemento de la vista
 */
 export async function imgDelete(prevState, formData) {
