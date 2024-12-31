@@ -17,43 +17,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 
 
-html {
-  padding: 30px;
-}
-
-
-button {
-  font-size: 1.2rem;
-}
-
-.galeria {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(324px, 1fr));
-}
-
-/* .imgPreview {
-  aspectRatio: 1.62;
-  height: 200px;
-  object-fit: cover;
-  object-position: center;
-} */
-
-/* a.enlace {
-  display: inline-block;
-  padding: 6px;
-  margin: 4px;
-  border: solid 1px lightblue;
-  border-radius: 5px;
-  background-color: azure;
-  text-decoration: none;
-}
-
-a.enlace:hover {
-  box-shadow: 0 0 2px gray;
-} */

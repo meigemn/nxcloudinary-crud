@@ -21,7 +21,7 @@ function ImageNew() {
 
     return (
         <form id="preview" className='w-fit relative mb-10'>
-            <InputImage img='image.png' />
+            <InputImage />
             <button formAction={actionCreate} title='SUBIR'
                 className={`absolute bottom-2 right-2 p-1 bg-green-500 text-white hover:text-green-900 rounded-full ${pendingCreate && 'animate-ping'}`}>
                 <CloudUpload />
