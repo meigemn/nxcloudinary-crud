@@ -18,27 +18,26 @@ function ImageEdit({ img }) {
     useEffect(() => {
         if (stateUpdate?.success) toast.success(stateUpdate.success)
         if (stateUpdate?.error) toast.error(stateUpdate.error)
-        refresh()
     }, [stateUpdate])
 
 
     useEffect(() => {
         if (stateDelete?.success) toast.success(stateDelete.success)
         if (stateDelete?.error) toast.error(stateDelete.error)
-        refresh()
+        refresh()     // refrescamos página después de mostrar mensaje de success o error
     }, [stateDelete])
 
     return (
-        <form id="preview" className='w-fit relative'>
+        <form className='w-fit relative'>
             <input type='hidden' name='public_id' value={img.public_id} />
-            <InputImage img={img.secure_url} />
+            <InputImage image={img.secure_url} />
 
-            <button formAction={actionUpdate} title='ACTUALIZAR'
-                className={`absolute bottom-12 right-2 p-1 bg-yellow-500 text-white hover:text-yellow-900 rounded-full ${pendingUpdate && 'animate-ping'}`}>
+            <button formAction={actionUpdate} title='ACTUALIZAR' disabled={pendingUpdate}
+                className={`absolute bottom-12 right-2 p-1 border border-slate-300 bg-yellow-400 text-white hover:bg-yellow-500 rounded-full disabled:bg-slate-400`}>
                 <RotateCw />
             </button>
-            <button formAction={actionDelete} title='ELIMINAR'
-                className={`absolute bottom-2 right-2 p-1 bg-red-500 text-white hover:text-red-900 rounded-full ${pendingDelete && 'animate-ping'}`}>
+            <button formAction={actionDelete} title='ELIMINAR' disabled={pendingDelete}
+                className={`absolute bottom-2 right-2 p-1 border border-slate-300 bg-red-400 text-white hover:bg-red-500 rounded-full disabled:bg-slate-400`}>
                 <Trash />
             </button>
 
