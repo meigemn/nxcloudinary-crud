@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 export default function Error({ error, reset }) {
     useEffect(() => {
         // Log the error to an error reporting service
-        console.log(error?.message)
+        console.log(error)
     }, [error])
 
     return (
@@ -17,7 +17,10 @@ export default function Error({ error, reset }) {
                 <li className='text-red-700'>¿Has intentado subir una imagen mayor de 4MB?</li>
                 <li className='text-red-700'>¿Has superado el límite de 500 operaciones?</li>
             </ul>
-            <button className="px-4 py-2 border mt-4 rounded-md text-white bg-blue-500" onClick={() => reset()}>
+
+            <button
+                onClick={() => reset()}
+                className="px-4 py-2 border mt-4 rounded-md text-white bg-blue-500">
                 Intentar de nuevo
             </button>
         </div>
