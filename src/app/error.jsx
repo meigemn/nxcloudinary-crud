@@ -2,12 +2,10 @@
 
 import { useEffect } from 'react'
 
-export default function Error({ digest, statusCode, error, reset }) {
+export default function Error({ error, reset }) {
     useEffect(() => {
         // Log the error to an error reporting service
-        // console.error(error)
-        // const text = JSON.parse(error.message)
-        console.log(error?.digest, error?.message)
+        console.log(error?.message)
     }, [error])
 
     return (
