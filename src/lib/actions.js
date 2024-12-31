@@ -24,7 +24,7 @@ export async function imgRetrieveAll() {
     max_results: 500
   });
 
-  return result;
+  return result.resources;
 }
 
 
