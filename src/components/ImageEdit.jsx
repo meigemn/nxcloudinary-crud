@@ -5,13 +5,13 @@ import { Eye, RotateCw, Trash } from 'lucide-react';
 import { useActionState, useEffect } from "react";
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';  // IMPORTANTE: No importar desde next/router
-import Link from 'next/link';
-
+import { useId } from 'react';
 
 
 
 function ImageEdit({ img }) {
     const { refresh } = useRouter()
+    const dialogId = useId()
 
 
     const [stateUpdate, actionUpdate, pendingUpdate] = useActionState(imgUpdate, null)
@@ -35,10 +35,18 @@ function ImageEdit({ img }) {
 
             <InputImage image={img.secure_url} />
 
-            <span title='VER' onClick={() => { window.open(img.secure_url, "newTab", "popup,left=100,top=100,width=600,height=370") }}
+            {/* <span title='VER' onClick={() => { window.open(img.secure_url, "newTab", "popup,left=100,top=100,width=600,height=370") }}
                 className={`absolute bottom-[88px] right-2 p-1 border border-slate-300 bg-blue-400 text-white hover:bg-blue-500 rounded-full`}>
                 <Eye />
-            </span>
+            </span> */}
+            <div onClick={() => document.getElementById(dialogId).showModal()}
+                className={`absolute bottom-[88px] right-2 p-1 border border-slate-300 bg-blue-400 text-white hover:bg-blue-500 rounded-full`}>
+                <Eye />
+            </div>
+            <dialog id={dialogId} onClick={() => document.getElementById(dialogId).close()}>
+                <img src={img.secure_url} alt="view" />
+            </dialog>
+
             <button formAction={actionUpdate} title='ACTUALIZAR' disabled={pendingUpdate}
                 className={`absolute bottom-[48px] right-2 p-1 border border-slate-300 bg-yellow-400 text-white hover:bg-yellow-500 rounded-full disabled:bg-slate-400`}>
                 <RotateCw />
