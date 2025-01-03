@@ -39,11 +39,15 @@ function ImageEdit({ img }) {
                 className={`absolute bottom-[88px] right-2 p-1 border border-slate-300 bg-blue-400 text-white hover:bg-blue-500 rounded-full`}>
                 <Eye />
             </span> */}
-            <div onClick={() => document.getElementById(dialogId).showModal()}
+            <div
+                onClick={() => document.getElementById(dialogId).showModal()}
                 className={`absolute bottom-[88px] right-2 p-1 border border-slate-300 bg-blue-400 text-white hover:bg-blue-500 rounded-full`}>
                 <Eye />
             </div>
-            <dialog id={dialogId} onClick={() => document.getElementById(dialogId).close()}>
+            <dialog
+                id={dialogId}
+                onClick={() => document.getElementById(dialogId).close()}
+                className='backdrop:bg-black/50 backdrop:backdrop-blur-none'>
                 <img src={img.secure_url} alt="view" />
             </dialog>
 
