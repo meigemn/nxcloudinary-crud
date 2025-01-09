@@ -13,7 +13,7 @@ D: DELETE -> imgDelete
 
 */
 
-const FOLDER = 'pruebas/varios'
+const FOLDER = 'galería'
 
 
 
