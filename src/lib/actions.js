@@ -44,13 +44,14 @@ export async function imgCreate(prevState, formData) {
 
   try {
     // Transformamos imagen al subirla
-    // width: 600, height: 370, aspect-ratio: 1.62
+    // width: 800, height: 800, aspect-ratio: 1
     const result = await cloudinary.uploader.upload(fileUri, {
       invalidate: true,
       asset_folder: FOLDER,
       public_id: path.parse(file.name).name,
-      aspect_ratio: "1.62",
-      width: 600,
+      aspect_ratio: "1",
+      width: 800,
+      height: 800,
       crop: "fill",
       gravity: "center"
     })
@@ -78,13 +79,14 @@ export async function imgUpdate(prevState, formData) {
 
   try {
     // Transformamos imagen al subirla
-    // width: 600, height: 370, aspect-ratio: 1.62
+    // width: 800, height: 800, aspect-ratio: 1
     const result = await cloudinary.uploader.upload(fileUri, {
       invalidate: true,
       asset_folder: FOLDER,
       public_id,
-      aspect_ratio: "1.62",
-      width: 600,
+      aspect_ratio: "1",
+      width: 800,
+      height: 800,
       crop: "fill",
       gravity: "center"
     })
