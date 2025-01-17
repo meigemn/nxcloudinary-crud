@@ -33,10 +33,10 @@ function ImageEdit({ img }) {
             <input type='hidden' name='public_id' value={img.public_id} />
 
             <InputImage image={img.secure_url} />
-
+            {/* icono de ojo para ver imagen */}
             <div
                 onClick={() => document.getElementById(dialogId).showModal()}
-                className={`absolute bottom-[88px] right-2 p-1 border border-slate-300 bg-blue-400 text-white hover:bg-blue-500 rounded-full`}>
+                className={`absolute bottom-[88px] right-2 p-1 border border-slate-300 bg-blue-400 text-white hover:bg-blue-500 rounded-full transition-transform duration-300 hover:scale-125`}>
                 <Eye />
             </div>
             <dialog
@@ -45,13 +45,14 @@ function ImageEdit({ img }) {
                 className='backdrop:bg-black/50 backdrop:backdrop-blur-none'>
                 <img src={img.secure_url} alt="view" />
             </dialog>
-
+            {/* Icono recargar */}
             <button formAction={actionUpdate} title='ACTUALIZAR' disabled={pendingUpdate}
-                className={`absolute bottom-[48px] right-2 p-1 border border-slate-300 bg-yellow-400 text-white hover:bg-yellow-500 rounded-full disabled:bg-slate-400`}>
+                className={`absolute bottom-[48px] right-2 p-1 border border-slate-300 bg-yellow-400 text-white hover:bg-yellow-500 rounded-full disabled:bg-slate-400 transition-transform duration-300 hover:scale-125`}>
                 <RotateCw />
             </button>
+            {/* Icono papelera */}
             <button formAction={actionDelete} title='ELIMINAR' disabled={pendingDelete}
-                className={`absolute bottom-[8px] right-2 p-1 border border-slate-300 bg-red-400 text-white hover:bg-red-500 rounded-full disabled:bg-slate-400`}>
+                className={`absolute bottom-[8px] right-2 p-1 border border-slate-300 bg-red-400 text-white hover:bg-red-500 rounded-full disabled:bg-slate-400 transition-transform duration-300 hover:scale-125`}>
                 <Trash />
             </button>
 
