@@ -22,7 +22,7 @@ function ImageNew() {
             <InputImage />
             <button formAction={actionCreate} title='SUBIR' disabled={pendingCreate}
                 className={`absolute bottom-2 right-2 p-1 border border-slate-300 bg-green-400 text-white hover:bg-green-500 rounded-full disabled:bg-slate-400`}>
-                <CloudUpload />
+                <CloudUpload />{/* Icono lucide-react */}
             </button>
         </form>
     );

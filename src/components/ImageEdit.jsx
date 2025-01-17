@@ -11,11 +11,11 @@ import { useId } from 'react';
 
 function ImageEdit({ img }) {
     const { refresh } = useRouter()
-    const dialogId = useId()
+    const dialogId = useId()/* Va creando identificadores a partir de cada elemento que se vaya creando */
 
     const [stateUpdate, actionUpdate, pendingUpdate] = useActionState(imgUpdate, {})
     const [stateDelete, actionDelete, pendingDelete] = useActionState(imgDelete, {})
-
+/* Estas son las acciones de servidor */
     useEffect(() => {
         stateUpdate.success && toast.success(stateUpdate.success)
         stateUpdate.error && toast.error(stateUpdate.error)
@@ -32,10 +32,10 @@ function ImageEdit({ img }) {
         <form className='w-fit relative'>
             <input type='hidden' name='public_id' value={img.public_id} />
 
-            <InputImage image={img.secure_url} />
+            <InputImage image={img.secure_url} />{/* Propiedad de cloudinary(seria el https) */}
             {/* icono de ojo para ver imagen */}
             <div
-                onClick={() => document.getElementById(dialogId).showModal()}
+                onClick={() => document.getElementById(dialogId).showModal()}/* CUalquier elemento con id dialogId tiene la funcion para se abre en modal */
                 className={`absolute bottom-[88px] right-2 p-1 border border-slate-300 bg-blue-400 text-white hover:bg-blue-500 rounded-full transition-transform duration-300 hover:scale-125`}>
                 <Eye />
             </div>

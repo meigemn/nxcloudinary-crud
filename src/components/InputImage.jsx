@@ -1,9 +1,9 @@
-'use client'
-
-import { useState } from "react";
+'use client'/* componente del lado de cliente, porque tiene eventos */
 
 
-// img: Drag over
+
+/* funciones para atender a los eventos */
+// Manejador del evento Drag over
 function dragOverHandler(ev) {
     ev.preventDefault();
 }
@@ -11,15 +11,16 @@ function dragOverHandler(ev) {
 
 // img: Drop
 function dropHandler(ev) {
-    ev.preventDefault();
-    const imgPreview = ev.target;
+    ev.preventDefault();/* que no se comporte como por defecto */
+    const imgPreview = ev.target;/* lo que produce el evento */
     const fileInput = ev.target.nextSibling;
     // console.dir(ev.target)
 
     if (ev.dataTransfer.items) {
         // Use DataTransferItemList interface to access the file(s)
         // console.log(...ev.dataTransfer.items);
-        [...ev.dataTransfer.items].forEach((item, i) => {
+        /* Convertimos los elementos de la lista en un array */
+        [...ev.dataTransfer.items].forEach((item, i) => {/* La i es para el indice del elemento */
             // If dropped items are files ...
             if (item.kind === "file") {
                 const file = item.getAsFile();
@@ -90,8 +91,8 @@ export default function InputImage({ image = default_image }) {
                 type='file'
                 name='file'
                 accept='image/*'
-                onChange={changeHandler}
-                style={{ display: 'none' }} />
+                onChange={changeHandler}/* cuando el input cambie de valor ejecutamos la funcion changeHandler */
+                style={{ display: 'none' }} />{/*  */}
 
         </>
 
